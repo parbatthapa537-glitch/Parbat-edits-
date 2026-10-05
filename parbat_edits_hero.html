@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ParbatEdits — Cinematic Creator</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050505;
+    color:#fff;
+    overflow:hidden;
+  }
+  .hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    padding:0 9%;
+    isolation:isolate;
+    background:
+      radial-gradient(circle at 75% 35%, rgba(255,70,70,.20), transparent 28%),
+      radial-gradient(circle at 20% 80%, rgba(90,60,255,.13), transparent 30%),
+      #050505;
+  }
+  .hero:before{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(110deg,rgba(0,0,0,.96) 0%,rgba(0,0,0,.72) 48%,rgba(0,0,0,.25) 100%);
+    z-index:-1;
+  }
+  .grid{
+    position:absolute;inset:0;z-index:-2;opacity:.16;
+    background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
+    background-size:55px 55px;
+    mask-image:linear-gradient(to right,transparent,#000 35%,#000 80%,transparent);
+  }
+  .content{max-width:720px}
+  .badge{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:9px 14px;border:1px solid rgba(255,255,255,.15);
+    border-radius:999px;background:rgba(255,255,255,.05);
+    color:#ddd;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;
+    backdrop-filter:blur(10px);margin-bottom:25px;
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:#ff3b3b;box-shadow:0 0 14px #ff3b3b}
+  h1{
+    font-size:clamp(58px,10vw,132px);line-height:.84;
+    letter-spacing:-6px;font-weight:900;text-transform:uppercase;
+  }
+  h1 span{
+    background:linear-gradient(90deg,#fff 10%,#ff4b4b 65%,#ff8b8b);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .tagline{
+    margin-top:28px;color:#bdbdbd;font-size:clamp(17px,2vw,22px);
+    line-height:1.6;max-width:600px;
+  }
+  .buttons{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+  .btn{
+    text-decoration:none;padding:15px 23px;border-radius:12px;font-weight:700;
+    transition:.25s;display:inline-flex;align-items:center;gap:10px;
+  }
+  .primary{background:#fff;color:#080808}
+  .primary:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(255,255,255,.16)}
+  .secondary{border:1px solid rgba(255,255,255,.2);color:#fff;background:rgba(255,255,255,.04)}
+  .secondary:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
+  .stats{display:flex;gap:35px;margin-top:52px}
+  .stat strong{display:block;font-size:25px}
+  .stat small{color:#777;letter-spacing:1px}
+  .visual{
+    position:absolute;right:7%;top:50%;transform:translateY(-50%);
+    width:min(38vw,520px);aspect-ratio:1;
+    border-radius:50%;
+    background:radial-gradient(circle,#ff3838 0%,#7b1111 15%,#190909 45%,transparent 68%);
+    filter:blur(1px);opacity:.75;z-index:-1;
+  }
+  .ring{position:absolute;inset:12%;border:1px solid rgba(255,80,80,.35);border-radius:50%;animation:spin 18s linear infinite}
+  .ring:after{content:"";position:absolute;width:9px;height:9px;background:#ff4545;border-radius:50%;top:-4px;left:50%;box-shadow:0 0 22px #ff4545}
+  .play{
+    position:absolute;right:17%;top:50%;transform:translateY(-50%);
+    width:130px;height:130px;border-radius:50%;
+    border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);
+    display:grid;place-items:center;backdrop-filter:blur(12px);
+    box-shadow:0 0 80px rgba(255,50,50,.18);
+  }
+  .play:before{content:"";margin-left:8px;border-left:24px solid #fff;border-top:15px solid transparent;border-bottom:15px solid transparent}
+  .nav{
+    position:absolute;top:0;left:0;right:0;padding:27px 9%;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .logo{font-weight:900;letter-spacing:2px}
+  .logo span{color:#ff4545}
+  .nav a{color:#aaa;text-decoration:none;font-size:14px}
+  .nav a:hover{color:#fff}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media(max-width:850px){
+    body{overflow:auto}
+    .hero{padding:120px 7% 70px;align-items:flex-start}
+    .visual{width:80vw;right:-25%;top:62%;opacity:.45}
+    .play{right:12%;top:64%;width:95px;height:95px}
+    .stats{margin-bottom:20px}
+    h1{letter-spacing:-3px}
+  }
+  @media(max-width:520px){
+    .nav{padding:22px 7%}
+    .nav a{display:none}
+    .stats{gap:20px}
+    .stat strong{font-size:20px}
+  }
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="logo">PARBAT<span>EDITS</span></div>
+    <a href="https://youtube.com/@parbatedits" target="_blank" rel="noopener">YouTube ↗</a>
+  </nav>
+
+  <main class="hero">
+    <div class="grid"></div>
+    <div class="visual"><div class="ring"></div></div>
+    <div class="play"></div>
+
+    <section class="content">
+      <div class="badge"><span class="dot"></span> Cinematic Video Creator</div>
+      <h1>PARBAT<br><span>EDITS</span></h1>
+      <p class="tagline">Turning moments into cinematic stories. Watch the latest edits and join the journey.</p>
+
+      <div class="buttons">
+        <a class="btn primary" href="https://youtube.com/@parbatedits" target="_blank" rel="noopener">▶ Watch My Videos</a>
+        <a class="btn secondary" href="https://youtube.com/@parbatedits" target="_blank" rel="noopener">Explore Channel ↗</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><strong>PARBAT</strong><small>CREATOR</small></div>
+        <div class="stat"><strong>EDIT</strong><small>CREATE</small></div>
+        <div class="stat"><strong>REPEAT</strong><small>GROW</small></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
